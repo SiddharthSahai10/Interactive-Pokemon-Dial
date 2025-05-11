@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Dial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #hover-display {
+    width: 200px;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: scale(1);
+    opacity: 0.95;
+    background: rgba(255, 255, 255, 0.95); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2), 0 0 10px rgba(147, 51, 234, 0.3);
+}
+   
+    
+    .dial-container {
+        background: radial-gradient(circle, rgba(232, 11, 11, 0.3) 0%, rgba(255,255,255,0.1) 70%);
+        border: 14px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 
+            0 0 30px rgba(142, 8, 228, 0.5),
+            inset 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+    
+    .pokemon {
+        border-radius: 6px;
+        background: rgba(18, 18, 17, 0.896);
+        padding:1px;
+        box-shadow: 
+            0 4px 14px rgba(0, 0, 0, 0.2),
+            0 0 10px rgba(255, 255, 255, 0.5);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    
+    }
+    
+    .pokemon:hover {
+        transform: rotate(var(--rotate, 0deg)) translateY(calc(-210px - 30px)) translateX(-50%) scale(1.5);
+        box-shadow: 
+            0 14px 24px rgba(0, 0, 0, 0.3),
+            0 0 15px rgba(255, 255, 255, 0.8),
+            0 0 30px rgba(147, 51, 234, 0.6);
+        z-index: 10;
+    }
+    
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    .spinning {
+        animation: spin 60s linear infinite;
+    }
+    
+    .paused {
+        animation-play-state: paused;
+    }
+    
+    #center-display {
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 255, 0.95));
+        border: 2px solid rgba(147, 51, 234, 0.3);
+        max-width: 90%;
+        width: 400px;
+    }
+ </style>
+</head>
+
+<body class="relative bg-gradient-to-r from-black via-indigo-300 to-violet-200 overflow-hidden flex items-center justify-center min-h-screen">
+    <div id="pokedex-text" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white font-bold text-5xl tracking-wider z-50 space-y-2">
+        <div>P</div>
+        <div>O</div>
+        <div>K</div>
+        <div>E</div>
+        <div class="mt-2">D</div>
+        <div>E</div>
+        <div>X</div>
+      </div>
+    
+
+    <div class="relative w-[425px] h-[430px] animate-[spin_60s_linear_infinite] backdrop-blur-md rounded-full shadow-2xl border-10 border-white/20" id="dial-container">
+
+        <div class="absolute inset-0 w-[400px] h-[400px]">
+            <img src="https://img.pokemondb.net/artwork/avif/pikachu.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(0deg) translateY(-210px) translateX(-50%)" data-description="Pikachu is an Electric-type Pokémon known for its yellow fur, long ears with black tips, and a lightning bolt-shaped tail." data-member="Pikachu">
+            <img src="https://img.pokemondb.net/artwork/avif/lucario.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(15deg) translateY(-210px) translateX(-50%)" data-description="A Fighting/Steel-type Pokémon with aura-sensing abilities. Evolves from Riolu." data-member="Lucario">
+            <img src="https://img.pokemondb.net/artwork/avif/charizard.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(30deg) translateY(-210px) translateX(-50%)" data-description="A Fire/Flying-type dragon-like Pokémon. Final evolution of Charmander." data-member="Charizard">
+            <img src="https://img.pokemondb.net/artwork/avif/infernape.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(45deg) translateY(-210px) translateX(-50%)" data-description="A Fire/Fighting-type monkey-like Pokémon. Final evolution of Chimchar." data-member="Infernape">
+            <img src="https://img.pokemondb.net/artwork/avif/dragonite.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(60deg) translateY(-210px) translateX(-50%)" data-description="A Dragon/Flying-type Pokémon with a gentle nature. Final evolution of Dratini." data-member="Dragonite">
+            <img src="https://img.pokemondb.net/artwork/avif/scyther.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(75deg) translateY(-210px) translateX(-50%)" data-description="A Bug/Flying-type Pokémon with sharp claws. Evolves into Scizor when traded while holding a Metal Coat." data-member="Scyther">
+            <img src="https://img.pokemondb.net/artwork/avif/vulpix.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(90deg) translateY(-210px) translateX(-50%)" data-description="A Fire-type fox Pokémon with six orange tails. Evolves into Ninetales when exposed to a Fire Stone." data-member="Vulpix">
+            <img src="https://img.pokemondb.net/artwork/avif/eevee.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(105deg) translateY(-210px) translateX(-50%)" data-description="A versatile Normal-type Pokémon that can evolve into various forms based on different environments and conditions." data-member="Eevee">
+            <img src="https://img.pokemondb.net/artwork/avif/oshawott.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(120deg) translateY(-210px) translateX(-50%)" data-description="A Water-type otter Pokémon that uses a shell as a weapon. Evolves into Dewott and then into Samurott." data-member="Oshawott">
+            <img src="https://img.pokemondb.net/artwork/avif/squirtle.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(135deg) translateY(-210px) translateX(-50%)" data-description="A Water-type turtle Pokémon known for its strong shell. Evolves into Wartortle and then into Blastoise." data-member="Squirtle">
+            <img src="https://img.pokemondb.net/artwork/avif/totodile.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(150deg) translateY(-210px) translateX(-50%)" data-description="A Water-type crocodile Pokémon with a playful and energetic nature. Evolves into Croconaw and then into Feraligatr." data-member="Totodile">
+            <img src="https://img.pokemondb.net/artwork/avif/jigglypuff.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(165deg) translateY(-210px) translateX(-50%)" data-description="A Fairy-type Pokémon known for its ability to put others to sleep with its soothing voice. Evolves from Igglybuff." data-member="Jigglypuff">
+            <img src="https://img.pokemondb.net/artwork/avif/alakazam.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(180deg) translateY(-210px) translateX(-50%)" data-description="A Psychic-type Pokémon with extraordinary intelligence and psychic powers. Evolves from Kadabra when traded." data-member="Alakazam">
+            <img src="https://img.pokemondb.net/artwork/avif/lapras.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(195deg) translateY(-210px) translateX(-50%)" data-description="A Water/Ice-type Pokémon known for its gentle nature and ability to ferry people across water. Often associated with legends." data-member="Lapras">
+            <img src="https://img.pokemondb.net/artwork/avif/cinderace.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(210deg) translateY(-210px) translateX(-50%)" data-description="A Fire-type Pokémon resembling a soccer player, known for its powerful kicking abilities. Final evolution of Scorbunny." data-member="Cinderace">
+            <img src="https://img.pokemondb.net/artwork/avif/snorlax.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(225deg) translateY(-210px) translateX(-50%)" data-description="A Normal-type Pokémon known for its massive size and love of sleep. Often found blocking paths due to its naps." data-member="Snorlax">
+            <img src="https://img.pokemondb.net/artwork/avif/togepi.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(240deg) translateY(-210px) translateX(-50%)" data-description="A Fairy-type Pokémon that evolves into Togetic. Known for its joyful and happy nature, it brings good luck to those around it." data-member="Togepi">
+            <img src="https://img.pokemondb.net/artwork/avif/tauros.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(255deg) translateY(-210px) translateX(-50%)" data-description="A Normal-type Pokémon resembling a bull, known for its aggressive nature. Often seen charging at high speeds." data-member="Tauros">
+            <img src="https://img.pokemondb.net/artwork/avif/heracross.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(270deg) translateY(-210px) translateX(-50%)" data-description="A Bug/Fighting-type Pokémon known for its powerful horn and strength. Evolves from a larvae stage and is known for its bravery." data-member="Heracross">
+            <img src="https://img.pokemondb.net/artwork/avif/mew.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(285deg) translateY(-210px) translateX(-50%)" data-description="A Mythical Psychic-type Pokémon with the ability to learn any move. Known for its playful and elusive nature." data-member="Mew">
+            <img src="https://img.pokemondb.net/artwork/avif/gyarados.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(300deg) translateY(-210px) translateX(-50%)" data-description="A Water/Flying-type Pokémon known for its fierce temper and destructive power. Evolves from Magikarp." data-member="Gyarados">
+            <img src="https://img.pokemondb.net/artwork/avif/farfetchd.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(315deg) translateY(-210px) translateX(-50%)" data-description="A Normal/Flying-type Pokémon carrying a leek as its weapon. Known for its quirky and independent nature." data-member="Farfetch'd">
+            <img src="https://img.pokemondb.net/artwork/avif/greninja.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(330deg) translateY(-210px) translateX(-50%)" data-description="A Water/Dark-type Pokémon known for its ninja-like agility and ability to blend into its surroundings. Final evolution of Froakie." data-member="Greninja">
+            <img src="https://img.pokemondb.net/artwork/avif/mankey.avif" class="pokemon w-14 h-14 absolute top-1/2 left-1/2" style="--rotate: 15deg; transform: rotate(345deg) translateY(-210px) translateX(-50%)" data-description="Mankey is known for its energetic and sometimes short-tempered nature. It often becomes very agitated and is quick to anger, leading to violent behavior." data-member="Mankey">
+        </div>
+    </div>
+
+    <div id="center-display" class="hidden absolute bg-white rounded-2xl p-6 shadow-2xl text-center transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-500">
+        <img id="center-img" src="" class="w-32 mx-auto mb-4" alt="">
+        <h2 id="center-name" class="text-2xl font-bold"></h2>
+        <p id="center-description" class="text-gray-600 mt-2"></p>
+        <button id="close-btn" class="mt-4 bg-pink-400 text-white px-4 py-2 rounded-lg hover:bg-pink-500">Close</button>
+    </div>
+
+    <div id="hover-display" class="hidden absolute bg-white rounded-2xl p-2 shadow-lg text-center z-50 ">
+    <img id="hover-img" alt="" class="w-16 h-20 mx-auto ">
+</div>
+<div id="pokedex-text" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white font-bold text-4xl tracking-wider z-50 space-y-2 drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]">
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
