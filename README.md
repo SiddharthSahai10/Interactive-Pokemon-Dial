@@ -5,7 +5,7 @@ A fun, interactive user interface inspired by a spinning Pokédex dial that show
 ## Preview
 
 ![Screenshot](./screenshot.png)  
-(Add a real screenshot of your UI here)
+
 
 ## Features
 
@@ -19,7 +19,7 @@ A fun, interactive user interface inspired by a spinning Pokédex dial that show
 
 - HTML5
 - [Tailwind CSS](https://tailwindcss.com/) – for utility-first styling
-- (Optional) JavaScript – if any interactivity is added
+- JavaScript –  interactivity is added
 
 ## Setup Instructions
 
@@ -47,3 +47,6 @@ A fun, interactive user interface inspired by a spinning Pokédex dial that show
 ## License
 
 This project is for educational purposes only.
+## Author
+
+This project was created by [Siddharth Sahai] and [Anmol Singh] as part of the Web Development assignment
